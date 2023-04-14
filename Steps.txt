@@ -1,0 +1,43 @@
+STEP 1:
+	--Categories Entity
+	  ->using System.ComponentModel.DataAnnotations;
+
+STEP 2:
+	--Products Entity
+	  ->using System.ComponentModel.DataAnnotations;
+
+STEP 3:
+	--Install Packages:
+		--Microsoft.EntityFrameworkCore
+		--Microsoft.EntityFrameworkCore.SqlServer
+		--Microsoft.EntityFrameworkCore.Tools
+		--Microsoft.EntityFrameworkCore.Design
+
+	--DbContext Class
+	  ->using Microsoft.EntityFrameworkCore;
+
+STEP 4:
+	--Connection String in appsettings.json:
+
+		--For Sql Server Authentication:
+			--"ConnectionStrings": { "con": "Data Source=.;user id=sa;password=a123456; Initial Catalog=DbMor5556; Encrypt=False" },
+		--For Windows Authentication:
+			--"ConnectionStrings": { "con": "Data Source=DESKTOP-R6JGHLF\\MSSQLSERVER01;Integrated Security=true; Initial Catalog=DbMorPro; Encrypt=False"},
+
+
+	--Declaration Of Connection String in Program.cs:
+ 	  ->using ProjectName.Models;
+	  ->using Microsoft.EntityFrameworkCore;
+
+
+	--Run Commands:
+		--add-migration Initial
+		--update-database
+
+STEP 5:
+	--Make Admin Layout In Shared Folder
+	--Slice Admin Template
+	--Paste before </body>
+	  -> @await RenderSectionAsync("Scripts", required: false)
+	--Make Category Controller
+
