@@ -18,6 +18,10 @@ namespace ECProject.Controllers
             _context = context;
         }
 
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
         // GET: Categories
         public async Task<IActionResult> Index()
         {

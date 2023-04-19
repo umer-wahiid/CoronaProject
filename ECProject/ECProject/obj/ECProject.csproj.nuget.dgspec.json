@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DELL\\Desktop\\ECProject\\ECProject\\ECProject.csproj": {}
+    "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\ECProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DELL\\Desktop\\ECProject\\ECProject\\ECProject.csproj": {
+    "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\ECProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\Desktop\\ECProject\\ECProject\\ECProject.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\ECProject.csproj",
         "projectName": "ECProject",
-        "projectPath": "C:\\Users\\DELL\\Desktop\\ECProject\\ECProject\\ECProject.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\Desktop\\ECProject\\ECProject\\obj\\",
+        "projectPath": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\ECProject.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -84,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
