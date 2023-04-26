@@ -2,9 +2,14 @@ STEP 1:
 	--Categories Entity
 	  ->using System.ComponentModel.DataAnnotations;
 
+
 STEP 2:
 	--Products Entity
 	  ->using System.ComponentModel.DataAnnotations;
+
+	--LINK OF STEPS 1 & 2:
+		https://www.mediafire.com/folder/3lkyobyl3k0v0/Step+1
+
 
 STEP 3:
 	--Install Packages:
@@ -16,11 +21,14 @@ STEP 3:
 	--DbContext Class
 	  ->using Microsoft.EntityFrameworkCore;
 
+	--LINK: https://www.mediafire.com/folder/siym32rjljfnp/Step+3
+
+
 STEP 4:
 	--Connection String in appsettings.json:
 
 		--For Sql Server Authentication:
-			--"ConnectionStrings": { "con": "Data Source=.;user id=sa;password=a123456; Initial Catalog=DbMor5556; Encrypt=False" },
+			--"ConnectionStrings": { "con": "Data Source=.;user id=sa;password=a123456; Initial Catalog=DbMorPro; Encrypt=False" },
 		--For Windows Authentication:
 			--"ConnectionStrings": { "con": "Data Source=DESKTOP-R6JGHLF\\MSSQLSERVER01;Integrated Security=true; Initial Catalog=DbMorPro; Encrypt=False"},
 
@@ -34,10 +42,25 @@ STEP 4:
 		--add-migration Initial
 		--update-database
 
+
 STEP 5:
 	--Make Admin Layout In Shared Folder
 	--Slice Admin Template
-	--Paste before </body>
+	--Paste before </body> :
 	  -> @await RenderSectionAsync("Scripts", required: false)
 	--Make Category Controller
+	
 
+	--LINKS FOR STEPS 4 & 5:
+		https://www.mediafire.com/file/iu951vdjv6t4bvx/Step_4.zip/file
+		https://www.mediafire.com/file/7zf12gc9bp1kgyr/Step_5.zip/file		
+
+
+STEP 6:
+	--Make Products Controller
+	--LINK: https://www.mediafire.com/file/fhxo8i0e2f5ynmw/Template_Set.zip/file
+
+
+STEP 7:
+	--Slice Website's Home Page
+	--LINK: https://www.mediafire.com/file/mip7yybi51vk21s/video1703859433.mp4/file
