@@ -61,10 +61,21 @@ STEP 6:
 	--LINK: https://www.mediafire.com/file/fhxo8i0e2f5ynmw/Template_Set.zip/file
 
 
+
 STEP 7:
 	--Slice Website's Home Page
 	--LINK: https://www.mediafire.com/file/mip7yybi51vk21s/video1703859433.mp4/file
 
 
+
 STEP 8:
 	--Product's Image Upload.
+
+		1.Changes In Create File Of Products.
+			-method set to post and enctype to multipart/formdata
+			-set input type to file and name to img
+		2.Changes in ProductController
+			-declaration of IWebHostEnvironment in Constructor
+			-changes in create(post) function
+
+	--LINK: https://www.mediafire.com/file/x92rqyy2x4g8a8k/Step_8.zip/file
