@@ -12,10 +12,12 @@ namespace ECProject.Controllers
     public class ProductsController : Controller
     {
         private readonly ECDbContext _context;
+        IWebHostEnvironment iw;
 
-        public ProductsController(ECDbContext context)
+        public ProductsController(ECDbContext context, IWebHostEnvironment iwc)
         {
             _context = context;
+            iw = iwc;
         }
 
         // GET: Products
@@ -56,15 +58,30 @@ namespace ECProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,ProductName,SDescription,LDescription,Brand,PImage,Price,CategoryId")] Product product)
+        public async Task<IActionResult> Create(Product product, IFormFile img)
         {
-            if (ModelState.IsValid)
+            if (img != null)
             {
-                _context.Add(product);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                string ext = Path.GetExtension(img.FileName);
+                if(ext =="jpg." || ext == "gif")
+                {
+                    string d = Path.Combine(iw.WebRootPath, "Image");
+                    var fname=Path.GetFileName(img.FileName);
+                    string filepath = Path.Combine(d, fname);
+                    using (var fs = new FileStream(filepath, FileMode.Create))
+                    {
+                        await img.CopyToAsync(fs);
+                    }
+                    product.PImage = @"\Image\" + fname;
+                    _context.Add(product);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ViewBag.m = "Wrong Picture Format";
+                }
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CName", product.CategoryId);
             return View(product);
         }
 

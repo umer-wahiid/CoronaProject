@@ -64,3 +64,7 @@ STEP 6:
 STEP 7:
 	--Slice Website's Home Page
 	--LINK: https://www.mediafire.com/file/mip7yybi51vk21s/video1703859433.mp4/file
+
+
+STEP 8:
+	--Product's Image Upload.
