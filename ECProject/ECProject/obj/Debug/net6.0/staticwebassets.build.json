@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EgUA0zmsCLOckINHylLXYkoN8t+SIU0hCsULj2R5vFo=",
+  "Hash": "OB5up8rAJN6nIeUgAK7zHHE6mzNQXnT8/Zmifou2N0M=",
   "Source": "ECProject",
   "BasePath": "_content/ECProject",
   "Mode": "Default",
@@ -15315,6 +15315,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\Image\\12.jpg",
+      "SourceId": "ECProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\",
+      "BasePath": "_content/ECProject",
+      "RelativePath": "Image/12.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Image\\12.jpg"
     },
     {
       "Identity": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\js\\site.js",

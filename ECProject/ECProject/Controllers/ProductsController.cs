@@ -58,12 +58,12 @@ namespace ECProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Product product, IFormFile img)
+        public async Task<IActionResult> Create(Product products, IFormFile img)
         {
             if (img != null)
             {
                 string ext = Path.GetExtension(img.FileName);
-                if(ext =="jpg." || ext == "gif")
+                if(ext ==".jpg" || ext == "gif")
                 {
                     string d = Path.Combine(iw.WebRootPath, "Image");
                     var fname=Path.GetFileName(img.FileName);
@@ -72,8 +72,8 @@ namespace ECProject.Controllers
                     {
                         await img.CopyToAsync(fs);
                     }
-                    product.PImage = @"\Image\" + fname;
-                    _context.Add(product);
+                    products.PImage = @"/Image/" + fname;
+                    _context.Add(products);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
@@ -82,7 +82,8 @@ namespace ECProject.Controllers
                     ViewBag.m = "Wrong Picture Format";
                 }
             }
-            return View(product);
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CName", products.CategoryId);
+            return View(products);
         }
 
         // GET: Products/Edit/5
