@@ -9,5 +9,7 @@ namespace ECProject.Models
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Login> UserLogins { get; set; }
+
     }
 }
