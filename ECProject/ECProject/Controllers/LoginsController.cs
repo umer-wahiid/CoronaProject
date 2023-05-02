@@ -40,6 +40,29 @@ namespace ECProject.Controllers
             return View();
         }
 
+
+        [HttpGet]
+        public ActionResult UserLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UserLogin(Login lg)
+        {
+            var x = from a in db.UserLogins where a.Email.Equals(lg.Email) && a.Password.Equals(lg.Password) select a;
+            if (x.Any())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ViewBag.m = "Wrong Credentials";
+            }
+            return View();
+        }
+
+
         // GET: LoginsController/Edit/5
         public ActionResult Edit(int id)
         {

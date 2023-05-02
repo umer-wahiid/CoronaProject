@@ -83,9 +83,30 @@ STEP 8:
 
 
 STEP 9:
-	--Login Work
+	--Registeration Work
 		--Entity
 		--Controller
 		--View
 
-	--LINK: 
+	--LINK:	https://www.mediafire.com/file/ik251c8mt89fyv3/STEP_9.zip/file		
+
+
+STEP 10:
+	--Login Work
+		--Function:
+			[HttpPost]
+        		public ActionResult UserLogin(Login lg)
+        		{
+            			var x =from a in db.UserLogins where a.Email.Equals(lg.Email) && a.Password.Equals(lg.Password) select a;
+            			if (x.Any())
+            			{
+                			return RedirectToAction("Index","Home");
+            			}
+            			else
+            			{
+            				ViewBag.m = "Wrong Credentials";
+            			}
+            			return View();
+        			}
+
+	--LINK:	https://www.mediafire.com/file/vn00vhdr5ittun4/STEP_10.zip/file
