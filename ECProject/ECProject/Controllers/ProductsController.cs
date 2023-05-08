@@ -108,36 +108,65 @@ namespace ECProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,SDescription,LDescription,Brand,PImage,Price,CategoryId")] Product product)
+        public async Task<IActionResult> Edit(int id,Product product, IFormFile img)
         {
-            if (id != product.ProductId)
+            if (img != null)
             {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
+                string ext = Path.GetExtension(img.FileName);
+                if (ext == ".jpg" || ext == "gif")
                 {
+                    string d = Path.Combine(iw.WebRootPath, "Image");
+                    var fname = Path.GetFileName(img.FileName);
+                    string filepath = Path.Combine(d, fname);
+                    using (var fs = new FileStream(filepath, FileMode.Create))
+                    {
+                        await img.CopyToAsync(fs);
+                    }
+                    product.PImage = @"Image/" + fname;
                     _context.Update(product);
                     await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
                 }
-                catch (DbUpdateConcurrencyException)
+                else
                 {
-                    if (!ProductExists(product.ProductId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    ViewBag.m = "Wrong Picture Format";
                 }
-                return RedirectToAction(nameof(Index));
             }
             ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CName", product.CategoryId);
             return View(product);
         }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Edit(int id, [Bind("ProductId,ProductName,SDescription,LDescription,Brand,PImage,Price,CategoryId")] Product product)
+        //{
+        //    if (id != product.ProductId)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            _context.Update(product);
+        //            await _context.SaveChangesAsync();
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            if (!ProductExists(product.ProductId))
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CName", product.CategoryId);
+        //    return View(product);
+        //}
 
         // GET: Products/Delete/5
         public async Task<IActionResult> Delete(int? id)

@@ -120,6 +120,7 @@ STEP 11:
 		add slug in product's entity(model) if not added already.
 		slug should be exactly the same as in category.
 		some changes in create,dit,delete, and index views.
+		remove Bling[] from edit function.
 		when we edit an entity, we use these commands to update database:
 			--add-migration addslug
 			--update-database

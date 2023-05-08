@@ -47,9 +47,9 @@
                 @Html.DisplayFor(modelItem => item.ProductName)
             </td>
             <td>
-                <img src="~/@Html.DisplayFor(modelItem => item.PImage)" width="60px" height="60px">
+                <img src="~/@Html.DisplayFor(modelItem => item.PImage)" width="60px">
             </td>
-            <td style="text-overflow: ellipsis;display: block;overflow: hidden;width: 7em;">
+            <td style="text-overflow: ellipsis;overflow: hidden;width: 7em;white-space:pre-wrap;vertical-align:middle;">
                 @Html.DisplayFor(modelItem => item.SDescription)
             </td>
                 <td style="text-overflow: ellipsis;display: block;overflow: hidden;width: 9em;">
