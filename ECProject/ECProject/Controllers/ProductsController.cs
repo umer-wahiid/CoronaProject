@@ -72,7 +72,7 @@ namespace ECProject.Controllers
                     {
                         await img.CopyToAsync(fs);
                     }
-                    products.PImage = @"/Image/" + fname;
+                    products.PImage = @"Image/" + fname;
                     _context.Add(products);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));

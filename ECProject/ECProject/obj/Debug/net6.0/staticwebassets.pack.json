@@ -9,6 +9,14 @@
       "PackagePath": "staticwebassets\\Image\\12.jpg"
     },
     {
+      "Id": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\Image\\T-shirt.jpg",
+      "PackagePath": "staticwebassets\\Image\\T-shirt.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\Image\\jeans.jpg",
+      "PackagePath": "staticwebassets\\Image\\jeans.jpg"
+    },
+    {
       "Id": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\Image\\two.jpg",
       "PackagePath": "staticwebassets\\Image\\two.jpg"
     },

@@ -110,3 +110,18 @@ STEP 10:
         			}
 
 	--LINK:	https://www.mediafire.com/file/vn00vhdr5ittun4/STEP_10.zip/file
+
+
+
+
+
+STEP 11:
+	--Add slug
+		add slug in product's entity(model) if not added already.
+		slug should be exactly the same as in category.
+		some changes in create,dit,delete, and index views.
+		when we edit an entity, we use these commands to update database:
+			--add-migration addslug
+			--update-database
+
+	--LINK: https://www.mediafire.com/file/9waeprsihm7otq7/STEP_11.zip/file

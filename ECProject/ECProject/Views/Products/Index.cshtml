@@ -17,6 +17,9 @@
                 @Html.DisplayNameFor(model => model.ProductName)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.PImage)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.SDescription)
             </th>
             <th>
@@ -26,13 +29,13 @@
                 @Html.DisplayNameFor(model => model.Brand)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PImage)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.slug)
             </th>
             <th></th>
         </tr>
@@ -44,22 +47,25 @@
                 @Html.DisplayFor(modelItem => item.ProductName)
             </td>
             <td>
+                <img src="~/@Html.DisplayFor(modelItem => item.PImage)" width="60px" height="60px">
+            </td>
+            <td style="text-overflow: ellipsis;display: block;overflow: hidden;width: 7em;">
                 @Html.DisplayFor(modelItem => item.SDescription)
             </td>
-            <td>
+                <td style="text-overflow: ellipsis;display: block;overflow: hidden;width: 9em;">
                 @Html.DisplayFor(modelItem => item.LDescription)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Brand)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PImage)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Category.CName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.slug)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |

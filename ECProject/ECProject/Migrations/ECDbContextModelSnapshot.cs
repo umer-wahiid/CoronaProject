@@ -125,6 +125,10 @@ namespace ECProject.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
+                    b.Property<string>("slug")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ProductId");
 
                     b.HasIndex("CategoryId");
