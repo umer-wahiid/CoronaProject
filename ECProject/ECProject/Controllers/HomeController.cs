@@ -6,16 +6,18 @@ namespace ECProject.Controllers
 {
     public class HomeController : Controller
     {
+        ECDbContext _context;
+
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ECDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_context.Products.ToList());
         }
 
         public IActionResult Privacy()

@@ -126,3 +126,19 @@ STEP 11:
 			--update-database
 
 	--LINK: https://www.mediafire.com/file/9waeprsihm7otq7/STEP_11.zip/file
+
+
+
+
+STEP 12:
+	--Show Products on Home Page.
+		declare ECDbContext in Constructor
+		alter function of Index
+		copy first line from Product's Index and Paste in Home Page
+		use foreach loop in Home's Index Page (copy it from Product's Index)
+		use @item.PImage to print data from database
+
+	--LINK: https://www.mediafire.com/file/wbjqsvg047qcw3j/Step_12.zip/file
+
+
+
