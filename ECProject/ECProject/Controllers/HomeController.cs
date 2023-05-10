@@ -19,6 +19,11 @@ namespace ECProject.Controllers
         {
             return View(_context.Products.ToList());
         }
+        
+        public IActionResult Details()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {
