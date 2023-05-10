@@ -1,5 +1,6 @@
 ﻿using ECProject.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace ECProject.Controllers
@@ -20,10 +21,23 @@ namespace ECProject.Controllers
             return View(_context.Products.ToList());
         }
         
-        public IActionResult Details()
+        public async Task<IActionResult> Details(int? id)
         {
-            return View();
-        }
+			if (id == null || _context.Products == null)
+			{
+				return NotFound();
+			}
+
+			var product = await _context.Products
+				.Include(p => p.Category)
+				.FirstOrDefaultAsync(m => m.ProductId == id);
+			if (product == null)
+			{
+				return NotFound();
+			}
+
+			return View(product);
+		}
 
         public IActionResult Privacy()
         {
