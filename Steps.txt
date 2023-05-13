@@ -142,8 +142,44 @@ STEP 12:
 
 
 STEP 13:
-	--Product's Detail
-	
+	--Product's Details
+		just copy paste funtion and all from product'index function	
 	--LINK: https://www.mediafire.com/file/0tfxjn7or7ro6ja/video1183880037.mp4/file
 
+
+STEP 14:
+	--Using Slug And Partial View
+		--copy & paste index funtion of Home Controller and paste it with the changed name...i used Products as a name to that function...
+		--then create a view for that function...+++ use websites layout page...
+		--now we're gonna apply product's page template...(i used cozastore-master...)
+
+
+
+
+
+
+
+
+
+		--for those who gets confuse while slicing or applying a temoplate...
+		--here are the steps to follow...
+		1.sab sy pehly template k page or apny project k layout page ka same code check karen...
+		2.means...yaha tak ka code me apny layout me use kar chuka...so ab mjhy need nhi iski...
+		3.now the footer part...
+		4.ab simply...jo code bacha hy...wo hamary use ka hy...
+
+		--see...it's that simple...
+
+		--the shortcut keys i'm using for searching is Ctrl+F...and then Ctrl+c and ctrl+v for copy and paste respectively...
+
+
+		--now, for filter part...we're gonna use partial view as per our teacher's instructions...
+		--Lezz..go..
+
+
+		--now we'll create a partial view in shared folder...
+		--remember that...the underscore in shared files name is not must...but we shoul add it to represent professionalism....
+		--I copied and pasted the filter div part which i wanted to get from partial view...
+		--@Html.Partial("_FilterView") --> use this code to get your partial view
+		--our next step will be to display categories in partial view
 

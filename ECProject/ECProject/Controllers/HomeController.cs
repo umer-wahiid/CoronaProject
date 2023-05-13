@@ -20,7 +20,14 @@ namespace ECProject.Controllers
         {
             return View(_context.Products.ToList());
         }
-        
+
+
+        public IActionResult Products()
+        {
+            return View(_context.Products.ToList());
+        }
+
+
         public async Task<IActionResult> Details(int? id)
         {
 			if (id == null || _context.Products == null)
