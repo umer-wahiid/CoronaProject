@@ -24,7 +24,16 @@ namespace ECProject.Controllers
 
         public IActionResult Products()
         {
-            return View(_context.Products.ToList());
+            var Pro = _context.Products.ToList();
+            var Cat = _context.Categories.ToList();
+
+            var ViewModel = new CombinedModels
+            {
+                ProData = Pro.ToList(),
+                CatData = Cat.ToList()
+            };
+
+			return View(ViewModel);
         }
 
 
