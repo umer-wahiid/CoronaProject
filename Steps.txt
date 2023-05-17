@@ -172,5 +172,30 @@ STEP 14:
 		--We'll fix this later...
 
 
-
 	--LINK : https://www.mediafire.com/file/p7ry2u1hg7topsl/Step_14.zip/file
+
+
+
+
+
+STEP 15:
+	--Component View + Filteration
+		--Create Class in Models. Class Name should be 'controllername+ViewComponent'
+			--using Microsoft.AspNetCore.Mvc;
+			--using Microsoft.EntityFrameworkCore;
+		--Inherit :ViewComponent in this class then call your DbContext
+		--function:
+			public async Task<IViewComponentResult> InvokeAsync()
+        		{
+            			return View(await _context.Categories.ToListAsync());
+        		}
+		
+		--Now Create a Default View. the location must be 'Shared/Components/Contr.Name/Default.cshtml'
+			--@using projectName.Models
+			--call @model IEnumerable<modelName>
+
+		--display this component view wherever you want by using:
+			--@await Component.InvokeAsync("Categories")
+
+
+	--LINK : https://www.mediafire.com/file/5yaiqaytc11hmk0/Step_15.zip/file
