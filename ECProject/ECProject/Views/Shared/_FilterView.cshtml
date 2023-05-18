@@ -12,9 +12,14 @@
 			</div>
 
 			<ul>
+				<li class="p-b-6">
+					<a asp-area="" asp-controller="Home" asp-action="Products" class="filter-link stext-106 trans-04">
+						All Products
+					</a>
+				</li>
 				@foreach (var Citem in Model.CatData) {
 				<li class="p-b-6">
-					<a href="#" class="filter-link stext-106 trans-04">
+					<a asp-area="" asp-controller="Home" asp-route-CategorySlug="@Citem.slug" asp-action="Products" class="filter-link stext-106 trans-04">
 						@Citem.CName
 					</a>
 				</li>

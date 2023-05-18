@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7qIeohFSrjnNsoAlFWxNyaFafpHpORgD1Kk+2iqPMK4=",
+  "Hash": "SIdVUTbB09EwTk6OmEbx84y5kg1KqPnQQpEbmB78qLc=",
   "Source": "ECProject",
   "BasePath": "_content/ECProject",
   "Mode": "Default",
@@ -15383,6 +15383,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Image\\T-shirt.jpg"
+    },
+    {
+      "Identity": "D:\\console\\CoronaProject\\ECProject\\ECProject\\wwwroot\\Image\\TShirt.jpg",
+      "SourceId": "ECProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\console\\CoronaProject\\ECProject\\ECProject\\wwwroot\\",
+      "BasePath": "_content/ECProject",
+      "RelativePath": "Image/TShirt.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Image\\TShirt.jpg"
     },
     {
       "Identity": "D:\\console\\CoronaProject\\ECProject\\ECProject\\wwwroot\\Image\\two.jpg",

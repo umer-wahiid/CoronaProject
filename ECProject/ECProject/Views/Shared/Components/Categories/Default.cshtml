@@ -11,13 +11,14 @@
 
 			<ul>
 				<li class="p-b-6">
-					<a asp-area="" asp-controller="Categories" asp-action="Index" class="filter-link stext-106 trans-04">
+					<a asp-area="" asp-controller="Home" asp-action="Index" class="filter-link stext-106 trans-04">
 						All Products
 					</a>
 				</li>
-				@foreach(var item in Model){
+				@foreach(var item in Model)
+				{
 				<li class="p-b-6">
-					<a asp-area="" asp-controller="Categories" asp-action="Index" class="filter-link stext-106 trans-04">
+					<a asp-area="" asp-controller="Home" asp-route-CategorySlug="@item.slug" asp-action="Index" class="filter-link stext-106 trans-04">
 						@item.CName
 					</a>
 				</li>
@@ -32,38 +33,38 @@
 
 			<ul>
 				<li class="p-b-6">
-					<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+					<a asp-area="" asp-controller="Home" asp-action="Index" class="filter-link stext-106 trans-04 filter-link-active">
 						All
 					</a>
 				</li>
 
 				<li class="p-b-6">
-					<a href="#" class="filter-link stext-106 trans-04">
-						$0.00 - $50.00
+					<a asp-area="" asp-controller="Home" asp-route-ProductPrice="500" asp-action="Index" class="filter-link stext-106 trans-04">
+						$0.00 - $500.00
 					</a>
 				</li>
 
 				<li class="p-b-6">
-					<a href="#" class="filter-link stext-106 trans-04">
-						$50.00 - $100.00
+					<a asp-area="" asp-controller="Home" asp-route-ProductPrice="1000" asp-action="Index" class="filter-link stext-106 trans-04">
+						$500.00 - $1000.00
 					</a>
 				</li>
 
 				<li class="p-b-6">
-					<a href="#" class="filter-link stext-106 trans-04">
-						$100.00 - $150.00
+					<a asp-area="" asp-controller="Home" asp-route-ProductPrice="1500" asp-action="Index" class="filter-link stext-106 trans-04">
+						$1000.00 - $1500.00
 					</a>
 				</li>
 
 				<li class="p-b-6">
-					<a href="#" class="filter-link stext-106 trans-04">
-						$150.00 - $200.00
+					<a asp-area="" asp-controller="Home" asp-route-ProductPrice="2000" asp-action="Index" class="filter-link stext-106 trans-04">
+						$1500.00 - $2000.00
 					</a>
 				</li>
 
 				<li class="p-b-6">
-					<a href="#" class="filter-link stext-106 trans-04">
-						$200.00+
+					<a asp-area="" asp-controller="Home" asp-route-ProductPrice="2500" asp-action="Index" class="filter-link stext-106 trans-04">
+						$2000.00 - $2500.00
 					</a>
 				</li>
 			</ul>

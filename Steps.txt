@@ -199,3 +199,57 @@ STEP 15:
 
 
 	--LINK : https://www.mediafire.com/file/5yaiqaytc11hmk0/Step_15.zip/file
+
+
+
+
+STEP 16:
+	--Filter By Slug and Filter By Price
+		--use foreach loop :
+			@foreach(var item in Model)
+			{
+				<li class="p-b-6">
+					<a asp-area="" asp-controller="Home" asp-route-CategorySlug="@item.slug" asp-action="Index" class="filter-link stext-106 trans-04">
+					@item.CName
+					</a>
+				</li>
+			}
+		--for Price's Filteration :
+				<a asp-area="" asp-controller="Home" asp-route-ProductPrice="500" asp-action="Index" class="filter-link stext-106 trans-04">
+					$0.00 - $500.00
+				</a>
+
+
+
+		--make function :
+			public async Task<IActionResult> Index(string categorySlug = "", string productPrice == "")
+        		{
+				ViewBag.CategorySLug = categorySlug;
+				ViewBag.ProductPrice = productPrice;
+				if (categorySlug == "" && productPrice == "")
+				{
+					return View(await _context.Products.OrderByDescending(p => p.ProductId).ToListAsync());
+				}
+				else if(categorySlug != "" && productPrice == "")
+				{
+					Category category = await _context.Categories.Where(c => c.slug == categorySlug).FirstOrDefaultAsync();
+					if (category == null) return RedirectToAction("Index");
+					var ProductsByCategory = _context.Products.Where(p => p.CategoryId == category.CategoryId);
+					return View(await ProductsByCategory.OrderByDescending(p => p.ProductId).ToListAsync());
+				}
+				else if(categorySlug == "" && productPrice != "")
+				{
+					var ProductsByPrice = _context.Products.Where(p => p.Price > (Int64.Parse(productPrice)-500) && p.Price <= Int64.Parse(productPrice));
+					return View(await ProductsByPrice.OrderByDescending(p => p.ProductId).ToListAsync());
+				}
+				else
+				{
+					return View(await _context.Products.OrderByDescending(p => p.ProductId).ToListAsync());
+				}
+        		}
+	
+
+
+
+	--LINK (Sir) : https://www.mediafire.com/file/9yj37se0sqcjnru/Step_16.zip/file
+	--LINK (Mine): https://www.mediafire.com/file/clhabbgueqjofl4/STEP_16.zip/file

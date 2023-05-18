@@ -16,25 +16,71 @@ namespace ECProject.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        //public IActionResult Index()
+        //{
+        //    return View(_context.Products.ToList());
+        //}
+        //i just copy and pasted the funtion...to understand this code...you'll have to watch the recording of today's class(18/5/2023  STEP:16)
+        public async Task<IActionResult> Index(string categorySlug = "" , string productPrice = "")
         {
-            return View(_context.Products.ToList());
-        }
-
-
-        public IActionResult Products()
-        {
-            var Pro = _context.Products.ToList();
-            var Cat = _context.Categories.ToList();
-
-            var ViewModel = new CombinedModels
+            ViewBag.CategorySLug = categorySlug;
+            ViewBag.ProductPrice = productPrice;
+            if (categorySlug == "" && productPrice == "")
             {
-                ProData = Pro.ToList(),
-                CatData = Cat.ToList()
-            };
-
-			return View(ViewModel);
+                return View(await _context.Products.OrderByDescending(p => p.ProductId).ToListAsync());
+            }
+            else if(categorySlug != "" && productPrice == "")
+            {
+                Category category = await _context.Categories.Where(c => c.slug == categorySlug).FirstOrDefaultAsync();
+                if (category == null) return RedirectToAction("Index");
+                var ProductsByCategory = _context.Products.Where(p => p.CategoryId == category.CategoryId);
+                return View(await ProductsByCategory.OrderByDescending(p => p.ProductId).ToListAsync());
+            }
+            else if(categorySlug == "" && productPrice != "")
+            {
+                var ProductsByPrice = _context.Products.Where(p => p.Price > (Int64.Parse(productPrice)-500) && p.Price <= Int64.Parse(productPrice));
+                return View(await ProductsByPrice.OrderByDescending(p => p.ProductId).ToListAsync());
+            }
+            else
+            {
+                return View(await _context.Products.OrderByDescending(p => p.ProductId).ToListAsync());
+            }
         }
+
+
+
+
+        public async Task<IActionResult> Products(string categorySlug = "")
+
+        {
+            ViewBag.CategorySLug = categorySlug;
+            if (categorySlug == "")
+            {
+                var Pro = await _context.Products.OrderByDescending(p => p.ProductId).ToListAsync();
+                var Cat = _context.Categories.ToList();
+                var ViewModel = new CombinedModels
+                {
+                    ProData = Pro.ToList(),
+                    CatData = Cat.ToList()
+                };
+                return View(ViewModel);
+            }
+            else
+            {
+                Category category = await _context.Categories.Where(c => c.slug == categorySlug).FirstOrDefaultAsync();
+                if (category == null) return RedirectToAction("Index");
+                var ProductsByCategory = _context.Products.Where(p => p.CategoryId == category.CategoryId);
+                var Pro = await ProductsByCategory.OrderByDescending(p => p.ProductId).ToListAsync();
+                var Cat = _context.Categories.ToList();
+                var ViewModel = new CombinedModels
+                {
+                    ProData = Pro.ToList(),
+                    CatData = Cat.ToList()
+                };
+                return View(ViewModel);
+            }
+        }
+
 
 
         public async Task<IActionResult> Details(int? id)
