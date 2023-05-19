@@ -50,40 +50,57 @@ namespace ECProject.Controllers
 
 
 
-        public async Task<IActionResult> Products(string categorySlug = "")
+		public async Task<IActionResult> Products(string categorySlug = "", string productPrice = "")
 
-        {
-            ViewBag.CategorySLug = categorySlug;
-            if (categorySlug == "")
-            {
-                var Pro = await _context.Products.OrderByDescending(p => p.ProductId).ToListAsync();
-                var Cat = _context.Categories.ToList();
-                var ViewModel = new CombinedModels
-                {
-                    ProData = Pro.ToList(),
-                    CatData = Cat.ToList()
-                };
-                return View(ViewModel);
-            }
-            else
-            {
-                Category category = await _context.Categories.Where(c => c.slug == categorySlug).FirstOrDefaultAsync();
-                if (category == null) return RedirectToAction("Index");
-                var ProductsByCategory = _context.Products.Where(p => p.CategoryId == category.CategoryId);
-                var Pro = await ProductsByCategory.OrderByDescending(p => p.ProductId).ToListAsync();
-                var Cat = _context.Categories.ToList();
-                var ViewModel = new CombinedModels
-                {
-                    ProData = Pro.ToList(),
-                    CatData = Cat.ToList()
-                };
-                return View(ViewModel);
-            }
-        }
+		{
+			ViewBag.CategorySLug = categorySlug;
+			ViewBag.ProductPrice = productPrice;
+			if (categorySlug == "" && productPrice == "")
+			{
+				var Pro = await _context.Products.OrderByDescending(p => p.ProductId).ToListAsync();
+				var Cat = _context.Categories.ToList();
+				var ViewModel = new CombinedModels
+				{
+					ProData = Pro.ToList(),
+					CatData = Cat.ToList()
+				};
+				return View(ViewModel);
+			}
+			else if (categorySlug != "" && productPrice == "")
+			{
+				Category category = await _context.Categories.Where(c => c.slug == categorySlug).FirstOrDefaultAsync();
+				if (category == null) return RedirectToAction("Index");
+				var ProductsByCategory = _context.Products.Where(p => p.CategoryId == category.CategoryId);
+				var Pro = await ProductsByCategory.OrderByDescending(p => p.ProductId).ToListAsync();
+				var Cat = _context.Categories.ToList();
+				var ViewModel = new CombinedModels
+				{
+					ProData = Pro.ToList(),
+					CatData = Cat.ToList()
+				};
+				return View(ViewModel);
+			}
+			else if (categorySlug == "" && productPrice != "")
+			{
+				var ProductsByPrice = _context.Products.Where(p => p.Price > (Int64.Parse(productPrice) - 500) && p.Price <= Int64.Parse(productPrice));
+				var Pro = await ProductsByPrice.OrderByDescending(p => p.ProductId).ToListAsync();
+				var Cat = _context.Categories.ToList();
+				var ViewModel = new CombinedModels
+				{
+					ProData = Pro.ToList(),
+					CatData = Cat.ToList()
+				};
+				return View(ViewModel);
+			}
+			else
+			{
+				return View(await _context.Products.OrderByDescending(p => p.ProductId).ToListAsync());
+			}
+		}
 
 
 
-        public async Task<IActionResult> Details(int? id)
+		public async Task<IActionResult> Details(int? id)
         {
 			if (id == null || _context.Products == null)
 			{

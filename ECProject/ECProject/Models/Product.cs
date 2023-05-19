@@ -2,6 +2,13 @@
 
 namespace ECProject.Models
 {
+	public enum Gender
+	{
+		Men,
+		Women,
+		Kids,
+		Unisex
+	}
     public class Product
     {
         public int ProductId { get; set; }
@@ -17,8 +24,9 @@ namespace ECProject.Models
 
         [StringLength(50)]
         public string Brand { get; set; }
+		public Gender Gender { get; set; }
 
-        [StringLength(150)]
+		[StringLength(150)]
         public string PImage { get; set; }
 
         public int Price { get; set; }

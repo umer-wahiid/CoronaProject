@@ -13,8 +13,28 @@
       "PackagePath": "staticwebassets\\Image\\IMG20210330150550 (1).jpg"
     },
     {
+      "Id": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\Image\\K Jeans.jpg",
+      "PackagePath": "staticwebassets\\Image\\K Jeans.jpg"
+    },
+    {
       "Id": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\Image\\T-shirt.jpg",
       "PackagePath": "staticwebassets\\Image\\T-shirt.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\Image\\TShirt.jpg",
+      "PackagePath": "staticwebassets\\Image\\TShirt.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\Image\\US Jeans.jpg",
+      "PackagePath": "staticwebassets\\Image\\US Jeans.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\Image\\W Jeans.jpg",
+      "PackagePath": "staticwebassets\\Image\\W Jeans.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\Image\\W Shirt.jpg",
+      "PackagePath": "staticwebassets\\Image\\W Shirt.jpg"
     },
     {
       "Id": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\Image\\jeans.jpg",

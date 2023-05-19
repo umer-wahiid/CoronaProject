@@ -102,6 +102,9 @@ namespace ECProject.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
                     b.Property<string>("LDescription")
                         .IsRequired()
                         .HasMaxLength(350)
