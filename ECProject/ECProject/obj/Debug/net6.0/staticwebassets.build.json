@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0jcPs0u++OXRwk4sPmc+vaHtNA+1p0gNU1jCVgpmONI=",
+  "Hash": "tUTiw3wHzA/zUal1Urs/UUyxkZm7W9z2QDP2po+Lpp0=",
   "Source": "ECProject",
   "BasePath": "_content/ECProject",
   "Mode": "Default",
@@ -15468,6 +15468,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Image\\W Jeans.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\Image\\W Shirt 2.jpg",
+      "SourceId": "ECProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\",
+      "BasePath": "_content/ECProject",
+      "RelativePath": "Image/W Shirt 2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Image\\W Shirt 2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\Image\\W Shirt 3.jpg",
+      "SourceId": "ECProject",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\",
+      "BasePath": "_content/ECProject",
+      "RelativePath": "Image/W Shirt 3.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Image\\W Shirt 3.jpg"
     },
     {
       "Identity": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\Image\\W Shirt.jpg",

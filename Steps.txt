@@ -253,3 +253,34 @@ STEP 16:
 
 	--LINK (Sir) : https://www.mediafire.com/file/9yj37se0sqcjnru/Step_16.zip/file
 	--LINK (Mine): https://www.mediafire.com/file/clhabbgueqjofl4/STEP_16.zip/file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+STEP 17 :
+	--Cart & Session with JSON
+		--CartItem Model Class
+		--Cart Controller
+		--Editing in Program.cs
+			--builder.Services.AddSession(options =>
+			{
+			    options.IdleTimeout = TimeSpan.FromMinutes(30);
+			    options.Cookie.IsEssential = true;
+			});
+			--app.UseSession();
+		--SessionExtensions Model Class
+		--CartViewModel Model Class
+		--SmallCartViewModel Model Class
+		--SmallCartViewComponent Model Class
+		--SmallCart/Default (Component View)

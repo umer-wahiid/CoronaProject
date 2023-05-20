@@ -33,6 +33,14 @@
       "PackagePath": "staticwebassets\\Image\\W Jeans.jpg"
     },
     {
+      "Id": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\Image\\W Shirt 2.jpg",
+      "PackagePath": "staticwebassets\\Image\\W Shirt 2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\Image\\W Shirt 3.jpg",
+      "PackagePath": "staticwebassets\\Image\\W Shirt 3.jpg"
+    },
+    {
       "Id": "C:\\Users\\HP\\source\\repos\\CoronaProject\\ECProject\\ECProject\\wwwroot\\Image\\W Shirt.jpg",
       "PackagePath": "staticwebassets\\Image\\W Shirt.jpg"
     },

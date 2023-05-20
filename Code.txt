@@ -1,0 +1,270 @@
+
+--CartItem MODEL CLASS
+namespace ECProject.Models
+{
+    public class CartItem
+    {
+            public int ProductId { get; set; }
+            public string ProductName { get; set; }
+            public int Quantity { get; set; }
+            public double Price { get; set; }
+            public double Total
+            {
+                get { return Quantity * Price; }
+            }
+            public string Image { get; set; }
+            public CartItem() { }
+            public CartItem(Product product)
+            {
+                ProductId = product.ProductId;
+                ProductName = product.ProductName;
+                Price = product.Price;
+                Quantity = 1;
+                Image = product.PImage;
+            }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--CartController CART CONTROLLER
+using Microsoft.AspNetCore.Mvc;
+using MorningSCart.Models;
+
+namespace MorningSCart.Controllers
+{
+    public class CartController : Controller
+    {
+        DbScart sc;
+        public CartController(DbScart dbc)
+        {
+            sc=dbc;
+        }
+
+        public IActionResult Index()
+        {
+            List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
+
+            CartViewModel cartVM = new()
+            {
+                CartItems = cart,
+                GrandTotal = cart.Sum(x => x.Quantity * x.Price)
+            };
+
+            return View(cartVM);
+        }
+        public async Task<IActionResult> Add(int id)
+        {
+            Product product = await sc.Products.FindAsync(id);
+
+            List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart") ?? new List<CartItem>();
+
+            CartItem cartItem = cart.Where(c => c.ProductId == id).FirstOrDefault();
+
+            if (cartItem == null)
+            {
+                cart.Add(new CartItem(product));
+            }
+            else
+            {
+                cartItem.Quantity += 1;
+            }
+            HttpContext.Session.SetJson("Cart", cart);
+
+            //  TempData["Success"] = "The product has been added!";
+
+            return Redirect(Request.Headers["Referer"].ToString());
+        }
+        public async Task<IActionResult> Decrease(int id)
+        {
+            List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart");
+
+            CartItem cartItem = cart.Where(c => c.ProductId == id).FirstOrDefault();
+
+            if (cartItem.Quantity > 1)
+            {
+                --cartItem.Quantity;
+            }
+            else
+            {
+                cart.RemoveAll(p => p.ProductId == id);
+            }
+
+            if (cart.Count == 0)
+            {
+                HttpContext.Session.Remove("Cart");
+            }
+            else
+            {
+                HttpContext.Session.SetJson("Cart", cart);
+            }
+
+            //   TempData["Success"] = "The product has been removed!";
+
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> Remove(int id)
+        {
+            List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart");
+
+            cart.RemoveAll(p => p.ProductId == id);
+
+            if (cart.Count == 0)
+            {
+                HttpContext.Session.Remove("Cart");
+            }
+            else
+            {
+                HttpContext.Session.SetJson("Cart", cart);
+            }
+
+            // TempData["Success"] = "The product has been removed!";
+
+            return RedirectToAction("Index");
+        }
+        public IActionResult Clear()
+        {
+            HttpContext.Session.Remove("Cart");
+
+            return RedirectToAction("Index");
+        }
+    }
+}
+
+
+
+
+
+
+
+
+--Program.cs CHANGES
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.IsEssential = true;
+});
+
+
+
+
+
+
+
+
+
+--SessionExtensions MODEL CLASS
+using Newtonsoft.Json;
+
+namespace ECProject.Models
+{
+	public static class SessionExtensions
+	{
+		public static void SetJson(this ISession session, string key, object value)
+		{
+			session.SetString(key, JsonConvert.SerializeObject(value));
+		}
+		public static T GetJson<T>(this ISession session, string Key)
+		{
+			var sessionData = session.GetString(Key);
+			return sessionData == null ? default(T) : JsonConvert.DeserializeObject<T>(sessionData);
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+--CartViewModel MODEL CLASS
+namespace ECProject.Models
+{
+	public class CartViewModel
+	{
+		public List<CartItem> CartItems { get; set; }
+		public double GrandTotal { get; set; }
+	}
+}
+
+
+
+
+
+
+
+--SmallCartViewModel MODEL CLASS
+namespace ECProject.Models
+{
+	public class SmallCartViewModel
+	{
+		public int NumberOfItems { get; set; }
+		public double TotalAmount { get; set; }
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+--SmallCartViewComponent MODEL CLASS
+public class SmallCartViewComponent : ViewComponent
+    {
+        public IViewComponentResult Invoke()
+        {
+            List<CartItem> cart = HttpContext.Session.GetJson<List<CartItem>>("Cart");
+            SmallCartViewModel smallCartVM;
+
+            if (cart == null || cart.Count == 0)
+            {
+                smallCartVM = null;
+            }
+            else
+            {
+                smallCartVM = new()
+                {
+                    NumberOfItems = cart.Sum(x => x.Quantity),
+                    TotalAmount = cart.Sum(x => x.Quantity * x.Price)
+                };
+            }
+
+            return View(smallCartVM);
+        }
+    }
+
+
+
+
+
+
+
+
