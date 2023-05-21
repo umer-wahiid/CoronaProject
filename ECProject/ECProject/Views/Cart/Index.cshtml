@@ -1,84 +1,32 @@
-﻿@model IEnumerable<ECProject.Models.Product>
+﻿@using ECProject.Models
+@model CartViewModel
 
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewData["Title"] = "Cart Overview";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Brand)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PImage)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.slug)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PImage)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.slug)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.CName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ProductId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
-            </td>
-        </tr>
+@if (Model.CartItems.Count > 0){
+		<table class="table">
+			<tr>
+				<th>Product</th>
+				<th>Quantity</th>
+				<th></th>
+				<th>Price</th>
+				<th>Total</th>
+			</tr>
+			@foreach(var item in Model.CartItem){
+				<tr>
+					<td>@item.ProductName</td>
+					<td>@item.Quantity</td>
+					<td>
+						<a class="btn btn-primary btn-sm" asp-action="Add" asp-route-id="@item.ProductId">+</a>
+						<a class="btn btn-info btn-sm" asp-action="Decrease" asp-route-id="@item.ProductId">-</a>
+						<a class="btn btn-danger btn-sm" asp-action="Remove" asp-route-id="@item.ProductId">Remove</a>
+					</td>
+					<td>@item.Price.ToString("C2")</td>
+					<td></td>
+				</tr>
+			}
+		</table>
 }
-    </tbody>
-</table>

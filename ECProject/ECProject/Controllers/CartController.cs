@@ -1,8 +1,7 @@
 ﻿using ECProject.Models;
 using Microsoft.AspNetCore.Mvc;
-using ECProject.Models;
 
-namespace MorningSCart.Controllers
+namespace ECProject.Controllers
 {
 	public class CartController : Controller
 	{
