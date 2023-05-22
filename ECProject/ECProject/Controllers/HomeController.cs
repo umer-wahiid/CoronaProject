@@ -50,13 +50,13 @@ namespace ECProject.Controllers
 
 
 
-		public async Task<IActionResult> Products(string categorySlug = "", string productPrice = "", string gender = "")
+		public async Task<IActionResult> Products(string categorySlug = "", string productPrice = "", string genderR = "")
 
 		{
 			ViewBag.CategorySLug = categorySlug;
 			ViewBag.ProductPrice = productPrice;
-			ViewBag.Gender = gender;
-			if (categorySlug == "" && productPrice == "" && gender == "")
+			ViewBag.GenderR = genderR;
+			if (categorySlug == "" && productPrice == "" && genderR == "")
 			{
 				var Pro = await _context.Products.OrderByDescending(p => p.ProductId).ToListAsync();
 				var Cat = _context.Categories.ToList();
@@ -67,7 +67,7 @@ namespace ECProject.Controllers
 				};
 				return View(ViewModel);
 			}
-			else if (categorySlug != "" && productPrice == "" && gender == "")
+			else if (categorySlug != "" && productPrice == "" && genderR == "")
 			{
 				Category category = await _context.Categories.Where(c => c.slug == categorySlug).FirstOrDefaultAsync();
 				if (category == null) return RedirectToAction("Index");
@@ -81,7 +81,7 @@ namespace ECProject.Controllers
 				};
 				return View(ViewModel);
 			}
-			else if (categorySlug == "" && gender == "" && productPrice != "")
+			else if (categorySlug == "" && genderR == "" && productPrice != "")
 			{
 				var ProductsByPrice = _context.Products.Where(p => p.Price > (Int64.Parse(productPrice) - 500) && p.Price <= Int64.Parse(productPrice));
 				var Pro = await ProductsByPrice.OrderByDescending(p => p.ProductId).ToListAsync();
@@ -93,9 +93,9 @@ namespace ECProject.Controllers
 				};
 				return View(ViewModel);
 			}
-			else if (categorySlug == "" && productPrice == "" && gender != "")
+			else if (categorySlug == "" && productPrice == "" && genderR != "")
 			{
-				var ProductsByGender = _context.Products.Where(p => p.Gender.Equals(gender));
+				var ProductsByGender = _context.Products.Where(p => p.Gender.Equals(genderR));
 				var Pro = await ProductsByGender.OrderByDescending(p => p.ProductId).ToListAsync();
 				var Cat = _context.Categories.ToList();
 				var ViewModel = new CombinedModels
