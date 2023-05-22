@@ -50,12 +50,13 @@ namespace ECProject.Controllers
 
 
 
-		public async Task<IActionResult> Products(string categorySlug = "", string productPrice = "")
+		public async Task<IActionResult> Products(string categorySlug = "", string productPrice = "", string gender = "")
 
 		{
 			ViewBag.CategorySLug = categorySlug;
 			ViewBag.ProductPrice = productPrice;
-			if (categorySlug == "" && productPrice == "")
+			ViewBag.Gender = gender;
+			if (categorySlug == "" && productPrice == "" && gender == "")
 			{
 				var Pro = await _context.Products.OrderByDescending(p => p.ProductId).ToListAsync();
 				var Cat = _context.Categories.ToList();
@@ -66,7 +67,7 @@ namespace ECProject.Controllers
 				};
 				return View(ViewModel);
 			}
-			else if (categorySlug != "" && productPrice == "")
+			else if (categorySlug != "" && productPrice == "" && gender == "")
 			{
 				Category category = await _context.Categories.Where(c => c.slug == categorySlug).FirstOrDefaultAsync();
 				if (category == null) return RedirectToAction("Index");
@@ -80,10 +81,22 @@ namespace ECProject.Controllers
 				};
 				return View(ViewModel);
 			}
-			else if (categorySlug == "" && productPrice != "")
+			else if (categorySlug == "" && gender == "" && productPrice != "")
 			{
 				var ProductsByPrice = _context.Products.Where(p => p.Price > (Int64.Parse(productPrice) - 500) && p.Price <= Int64.Parse(productPrice));
 				var Pro = await ProductsByPrice.OrderByDescending(p => p.ProductId).ToListAsync();
+				var Cat = _context.Categories.ToList();
+				var ViewModel = new CombinedModels
+				{
+					ProData = Pro.ToList(),
+					CatData = Cat.ToList()
+				};
+				return View(ViewModel);
+			}
+			else if (categorySlug == "" && productPrice == "" && gender != "")
+			{
+				var ProductsByGender = _context.Products.Where(p => p.Gender == gender).FirstOrDefaultAsync();
+				var Pro = await ProductsByGender.OrderByDescending(p => p.ProductId).ToListAsync();
 				var Cat = _context.Categories.ToList();
 				var ViewModel = new CombinedModels
 				{
@@ -118,7 +131,11 @@ namespace ECProject.Controllers
 			return View(product);
 		}
 
-        public IActionResult Privacy()
+        public IActionResult About()
+        {
+            return View();
+        }
+		public IActionResult Contact()
         {
             return View();
         }

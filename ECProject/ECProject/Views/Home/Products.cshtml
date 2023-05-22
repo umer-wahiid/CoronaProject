@@ -31,8 +31,9 @@
 			</div>
 
 			<div class="flex-w flex-c-m m-tb-10">
-				<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4">
+				<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
 					<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
+					<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
 					Filter
 				</div>
 
@@ -84,10 +85,13 @@
 						</div>
 
 						<div class="block2-txt-child2 flex-r p-t-3">
-							<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+								<a asp-action="Add" asp-controller="Cart" asp-route-id="@Pitem.ProductId" class="dis-block pos-relative">
+									<i style="font-size:25px;color:black;" class="zmdi zmdi-shopping-cart"></i>
+								</a>
+@*							<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
 								<img class="icon-heart1 dis-block trans-04" src="~/web/images/icons/icon-heart-01.png" alt="ICON">
 								<img class="icon-heart2 dis-block trans-04 ab-t-l" src="~/web/images/icons/icon-heart-02.png" alt="ICON">
-							</a>
+							</a>*@
 						</div>
 					</div>
 				</div>
