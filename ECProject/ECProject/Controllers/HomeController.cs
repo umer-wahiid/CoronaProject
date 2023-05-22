@@ -95,7 +95,7 @@ namespace ECProject.Controllers
 			}
 			else if (categorySlug == "" && productPrice == "" && gender != "")
 			{
-				var ProductsByGender = _context.Products.Where(p => p.Gender == gender).FirstOrDefaultAsync();
+				var ProductsByGender = _context.Products.Where(p => p.Gender.Equals(gender));
 				var Pro = await ProductsByGender.OrderByDescending(p => p.ProductId).ToListAsync();
 				var Cat = _context.Categories.ToList();
 				var ViewModel = new CombinedModels
